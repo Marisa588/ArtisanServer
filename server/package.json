@@ -1,0 +1,11 @@
+{
+  "name": "radrecords",
+  "version": "1.0.0",
+  "description": "Server meant to connect with radrecords client",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "72-Hour-Wizards",
+  "license": "ISC"
+}
