@@ -16,5 +16,14 @@
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.6.5"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marisa588/ArtisanServer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Marisa588/ArtisanServer/issues"
+  },
+  "homepage": "https://github.com/Marisa588/ArtisanServer#readme"
 }
