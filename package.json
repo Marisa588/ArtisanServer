@@ -11,10 +11,6 @@
   "author": "72-Hour-Wizards",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "bcrypt": "^5.0.1",
-=======
->>>>>>> c9a21b5a1bc75f0d43555a231ddcbc68ccf31c0d
     "bcryptjs": "^2.4.3",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
