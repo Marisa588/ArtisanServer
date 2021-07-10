@@ -7,4 +7,4 @@ This is the server-side application for Rad Records
 `npm install bcrypt dotenv express jsonwebtoken pg pg-hstore sequelize`
 
 ## ❗ Important
-Dependencies should be installed in the `server` folder and not the root project folder.
+Server listens on 3001, so please direct all get requests accordingly. This port was chosen to free port 3000 for React testing.
