@@ -1,7 +1,13 @@
+require("dotenv").config();
+
 const Express = require("express")
 const app = Express()
 
+const dbConnection = require("./db");
+
 const controllers = require('./controllers')
+
+app.use(Express.json());
 
 // app.use('/test', (req, res) => {
 //     res.send("This is the RAD RECORDS SERVER! It's RAD!")
@@ -16,6 +22,15 @@ app.use("/", (req, res) => {
     res.send("This is the homepage test")
 })
 
-app.listen(3001, () => {
-    console.log(`[Server]: App is listening on 3001.`)
+
+
+dbConnection.authenticate()
+.then(() => dbConnection.sync())
+.then(() => {
+    app.listen(3001, () => {
+        console.log(`[Server]: App is listening on 3001.`);
+    });
+})
+.catch((err) => {
+    console.log(`[Server]: Server crashed. Error = ${err}`);
 })
