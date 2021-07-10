@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
 
-// const sequelize = new Sequelize("postgres://postgres:B00g3r5!@localhost:5432/workout-log-db")
+const sequelize = new Sequelize("postgres://postgres:72hourwizards@vpostgres.csmzuruqvoj3.us-west-2.rds.amazonaws.com:5432/wizards")
 
 module.exports = sequelize
