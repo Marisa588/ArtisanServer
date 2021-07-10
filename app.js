@@ -1,6 +1,8 @@
 const Express = require("express")
 const app = Express()
 
+const controllers = require('./controllers')
+
 // app.use('/test', (req, res) => {
 //     res.send("This is the RAD RECORDS SERVER! It's RAD!")
 // })
