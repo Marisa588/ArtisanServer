@@ -29,7 +29,7 @@ router.post("/register", async (req, res) => {
                 message: "Failed to register user",
             });
         }
-    }
+    } 
 });
 
 router.post("/login", async (req, res) => {
