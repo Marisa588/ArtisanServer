@@ -1,4 +1,4 @@
-const UserModel = require("./user")
-const ProductModel = require("./product")
+const UserModel = require('./user')
+const ProductModel = require('./product')
 
-module.exports = { UserModel, ProductModel }
+module.exports = {UserModel, ProductModel}
