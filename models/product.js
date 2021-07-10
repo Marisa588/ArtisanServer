@@ -14,6 +14,10 @@ const Product = db.define("product", {
         type: DataTypes.INTEGER,
         allowNull: false,
     },
+    condition: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     owner_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
