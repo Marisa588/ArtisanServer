@@ -10,6 +10,8 @@ const upload = require("./middleware/multer");
 
 app.use(Express.json());
 
+app.use(require('./middleware/headers'));
+
 app.use("/products", controllers.productController)
 
 app.use("/user", controllers.userController)
