@@ -4,7 +4,7 @@
 This is the server-side application for Rad Records
 
 # Dependencies
-`npm install bcrypt dotenv express jsonwebtoken pg pg-hstore sequelize`
+`npm install bcrypt dotenv express jsonwebtoken pg pg-hstore sequelize multer multer-s3 aws-sdk cors`
 
 ## ❗ Important
 Server listens on 3001, so please direct all get requests accordingly. This port was chosen to free port 3000 for React testing.
