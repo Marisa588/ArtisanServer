@@ -21,6 +21,7 @@ app.post("/albumcover", upload.single("image"), (req, res) => {
     coverName = res.req.file.filename
     res.send(coverName)
 })
+
 dbConnection.authenticate()
 .then(() => dbConnection.sync())
 .then(() => {
