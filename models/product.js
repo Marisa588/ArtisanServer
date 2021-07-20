@@ -22,6 +22,11 @@ const Product = db.define("product", {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    imageUrl: {
+        type: DataTypes.STRING,
+        allowNull: true,
+        defaultValue: "",
+    },
     owner_id: {
         type: DataTypes.INTEGER,
         allowNull: false,

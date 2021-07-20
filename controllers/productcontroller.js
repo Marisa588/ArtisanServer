@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 
 // post a product 
 router.post('/', validateJWT, async (req, res) => {
-    const { artist, album, description, price, condition } = req.body.product;
+    const { artist, album, description, price, condition, imageUrl } = req.body.product;
     const { id } = req.user;
     const productEntry = {
         artist,
@@ -25,6 +25,7 @@ router.post('/', validateJWT, async (req, res) => {
         description,
         price,
         condition,
+        imageUrl,
         owner_id: id
     }
     try {
@@ -37,7 +38,7 @@ router.post('/', validateJWT, async (req, res) => {
 
 // edit a product 
 router.post("/:id", validateJWT, async (req, res) => {
-    const { artist, album, description, price, condition } = req.body.product;
+    const { artist, album, description, price, condition, imageUrl } = req.body.product;
     const productId = req.params.id;
     const { id } = req.user;
 
@@ -53,7 +54,8 @@ router.post("/:id", validateJWT, async (req, res) => {
         album: album,
         description: description,
         price: price,
-        condition: condition
+        condition: condition,
+        imageUrl: imageUrl
     };
     try {
         const update = await ProductModel.update(updatedProduct, query);
