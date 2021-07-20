@@ -3,6 +3,7 @@ const router = Express.Router()
 const { ProductModel } = require("../models");
 const Product = require("../models/product");
 const validateJWT = require("../middleware/validate-jwt");
+const upload = require("../middleware/multer");
 
 
 // show all products 
@@ -15,9 +16,15 @@ router.get('/', async (req, res) => {
     }
 })
 
-// post a product 
-router.post('/', validateJWT, async (req, res) => {
-    const { artist, album, description, price, condition, imageUrl } = req.body.product;
+// post a product
+// app.post("/albumcover", upload.single("image"), (req, res) => {
+//     console.log(req.file)
+//     coverName = res.req.file.filename
+//     res.send(coverName)
+// })
+
+router.post('/', validateJWT, upload.single("image"), async (req, res) => {
+    const { artist, album, description, price, condition } = req.body.product;
     const { id } = req.user;
     const productEntry = {
         artist,
@@ -25,7 +32,7 @@ router.post('/', validateJWT, async (req, res) => {
         description,
         price,
         condition,
-        imageUrl,
+        imageUrl: req.file.location,
         owner_id: id
     }
     try {
@@ -35,6 +42,26 @@ router.post('/', validateJWT, async (req, res) => {
         res.status(500).json({ error: err });
     }
 });
+
+// router.post('/', validateJWT, async (req, res) => {
+//     const { artist, album, description, price, condition, imageUrl } = req.body.product;
+//     const { id } = req.user;
+//     const productEntry = {
+//         artist,
+//         album,
+//         description,
+//         price,
+//         condition,
+//         imageUrl,
+//         owner_id: id
+//     }
+//     try {
+//         const newProduct = await ProductModel.create(productEntry);
+//         res.status(200).json(newProduct);
+//     } catch (err) {
+//         res.status(500).json({ error: err });
+//     }
+// });
 
 // edit a product 
 router.post("/:id", validateJWT, async (req, res) => {
