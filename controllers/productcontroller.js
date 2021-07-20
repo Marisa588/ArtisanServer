@@ -17,10 +17,11 @@ router.get('/', async (req, res) => {
 
 // post a product 
 router.post('/', validateJWT, async (req, res) => {
-    const { title, description, price, condition } = req.body.product;
+    const { artist, album, description, price, condition } = req.body.product;
     const { id } = req.user;
     const productEntry = {
-        title,
+        artist,
+        album,
         description,
         price,
         condition,
@@ -35,8 +36,8 @@ router.post('/', validateJWT, async (req, res) => {
 });
 
 // edit a product 
-router.put("/:id", validateJWT, async (req, res) => {
-    const { title, description, price, condition } = req.body.product;
+router.post("/:id", validateJWT, async (req, res) => {
+    const { artist, album, description, price, condition } = req.body.product;
     const productId = req.params.id;
     const { id } = req.user;
 
@@ -48,7 +49,8 @@ router.put("/:id", validateJWT, async (req, res) => {
     };
 
     const updatedProduct = {
-        title: title,
+        artist: artist,
+        album: album,
         description: description,
         price: price,
         condition: condition

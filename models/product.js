@@ -2,16 +2,20 @@ const { DataTypes } = require("sequelize")
 const db = require("../db")
 
 const Product = db.define("product", {
-    title: {
+    artist: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    album: {
         type: DataTypes.STRING,
         allowNull: false,
     },
     description: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false,
     },
     price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
     },
     condition: {
