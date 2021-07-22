@@ -24,7 +24,7 @@ router.get('/', async (req, res) => {
 // })
 
 router.post('/', validateJWT, upload.single("image"), async (req, res) => {
-    const { artist, album, description, price, condition } = req.body.product;
+    const { artist, album, description, price, condition, imageUrl} = req.body.product;
     const { id } = req.user;
     const productEntry = {
         artist,
@@ -32,7 +32,7 @@ router.post('/', validateJWT, upload.single("image"), async (req, res) => {
         description,
         price,
         condition,
-        imageUrl: req.file.location,
+        imageUrl,
         owner_id: id
     }
     try {
