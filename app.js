@@ -5,6 +5,7 @@ const app = Express()
 
 const dbConnection = require("./db");
 
+
 const controllers = require('./controllers');
 const upload = require("./middleware/multer");
 
@@ -25,8 +26,8 @@ app.post("/albumcover", upload.single("image"), (req, res) => {
 dbConnection.authenticate()
 .then(() => dbConnection.sync())
 .then(() => {
-    app.listen(3001, () => {
-        console.log(`[Server]: App is listening on 3001.`);
+    app.listen(process.env.PORT, () => {
+        console.log(`[Server]: App is listening on ${process.env.PORT}`);
     });
 })
 .catch((err) => {
