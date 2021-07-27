@@ -22,6 +22,35 @@ app.post("/albumcover", upload.single("image"), (req, res) => {
     res.send(coverName)
 })
 
+
+const multer = require("multer");
+const cors = require("cors");
+
+app.use(cors());
+
+var upload2 = multer({ dest: "../public/uploads/" });
+
+
+app.post("/upload", upload.single("file"), async (req, res) => {
+    try {    
+      if (req.file) {
+        res.send({
+          status: true,
+          message: "File Uploaded!",
+        });
+      } else {
+        res.status(400).send({
+          status: false,
+          data: "File Not Found :(",
+        });
+      }
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  });
+
+
+
 dbConnection.authenticate()
 .then(() => dbConnection.sync())
 .then(() => {
