@@ -5,24 +5,22 @@ const app = Express()
 
 const dbConnection = require("./db");
 
-const controllers = require('./controllers')
+const controllers = require('./controllers');
+const upload = require("./middleware/multer");
 
 app.use(Express.json());
 
-// app.use('/test', (req, res) => {
-//     res.send("This is the RAD RECORDS SERVER! It's RAD!")
-// })
-
-
+app.use(require('./middleware/headers'));
 
 app.use("/products", controllers.productController)
+
 app.use("/user", controllers.userController)
 
-app.use("/", (req, res) => {
-    res.send("This is the homepage test")
+app.post("/albumcover", upload.single("image"), (req, res) => {
+    console.log(req.file)
+    coverName = res.req.file.filename
+    res.send(coverName)
 })
-
-
 
 dbConnection.authenticate()
 .then(() => dbConnection.sync())

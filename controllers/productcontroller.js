@@ -15,15 +15,34 @@ router.get('/', async (req, res) => {
     }
 })
 
+// get my posts
+
+router.get("/mine", validateJWT, async (req, res) => {
+    const { id } = req.user;
+    
+    try {
+        const userProducts = await ProductModel.findAll({
+            where: {
+                owner_id: id
+            }
+        });
+        res.status(200).json(userProducts);
+    } catch (err) {
+        res.status(500).json({ error: error });
+    }
+});
+
 // post a product 
 router.post('/', validateJWT, async (req, res) => {
-    const { title, description, price, condition } = req.body.product;
+    const { artist, album, description, price, condition, imageUrl } = req.body.product;
     const { id } = req.user;
     const productEntry = {
-        title,
+        artist,
+        album,
         description,
         price,
         condition,
+        imageUrl,
         owner_id: id
     }
     try {
@@ -35,8 +54,8 @@ router.post('/', validateJWT, async (req, res) => {
 });
 
 // edit a product 
-router.put("/:id", validateJWT, async (req, res) => {
-    const { title, description, price, condition } = req.body.product;
+router.post("/:id", validateJWT, async (req, res) => {
+    const { artist, album, description, price, condition, imageUrl } = req.body.product;
     const productId = req.params.id;
     const { id } = req.user;
 
@@ -48,10 +67,12 @@ router.put("/:id", validateJWT, async (req, res) => {
     };
 
     const updatedProduct = {
-        title: title,
+        artist: artist,
+        album: album,
         description: description,
         price: price,
-        condition: condition
+        condition: condition,
+        imageUrl: imageUrl
     };
     try {
         const update = await ProductModel.update(updatedProduct, query);
