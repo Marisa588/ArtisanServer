@@ -15,6 +15,23 @@ router.get('/', async (req, res) => {
     }
 })
 
+// get my posts
+
+router.get("/mine", validateJWT, async (req, res) => {
+    const { id } = req.user;
+    
+    try {
+        const userProducts = await ProductModel.findAll({
+            where: {
+                owner_id: id
+            }
+        });
+        res.status(200).json(userProducts);
+    } catch (err) {
+        res.status(500).json({ error: error });
+    }
+});
+
 // post a product 
 router.post('/', validateJWT, async (req, res) => {
     const { artist, album, description, price, condition, imageUrl } = req.body.product;
