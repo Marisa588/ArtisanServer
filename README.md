@@ -1,5 +1,7 @@
 ![Rad-Records-Beta-Logo](https://github.com/Marisa588/ArtisanClient/blob/main/Random%20Assets/radrecords_v0.1_small.png)
 
+https://radradclient.herokuapp.com
+
 # What is this?
 This is the server-side application for Rad Records. With it, you can push record data to a table via the Rad Records client.
 
